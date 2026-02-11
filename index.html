@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NetAsset | Web Paketleri</title>
+
+  <style>
+    :root{
+      --bg:#f3f4f6;
+      --primary:#111;
+      --accent:#ffb703;
+      --card:#ffffff;
+      --muted:#666;
+      --success:#16a34a;
+      --section:#ffffff;
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:linear-gradient(180deg,#f3f4f6 0%, #ffffff 100%);
+      color:var(--primary);
+      line-height:1.6;
+    }
+
+    /* HERO */
+    .hero{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:40px 20px;
+      gap:20px;
+    }
+
+    /* LOGO KUTUSU */
+    .logo-box{
+      width: 90px;
+      height:90px;
+      border:2px dashed #ccc;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#999;
+      font-size:14px;
+    }
+
+  .logo-box {
+  width: 64px;
+  height: 64px;
+}
+
+.logo-img {
+  width: 42px !important;
+  height: auto !important;
+  max-width: 42px !important;
+  display: block;
+  margin: 0 auto;
+}
+
+
+
+
+
+
+    .hero h1{
+      font-size:clamp(26px,5vw,48px);
+      font-weight:800;
+    }
+
+    .hero p{
+      color:var(--muted);
+      font-size:18px;
+    }
+
+    .scroll-btn{
+      background:var(--accent);
+      color:#000;
+      padding:14px 26px;
+      border-radius:30px;
+      font-weight:bold;
+      text-decoration:none;
+      margin-top:10px;
+    }
+
+    /* WHY SECTION */
+    .why{
+      background:linear-gradient(135deg,#ffffff 0%, #f9fafb 100%);
+      padding:80px 20px;
+    }
+
+    .why-inner{
+      max-width:1100px;
+      margin:auto;
+      text-align:center;
+    }
+
+    .why h2{
+      font-size:clamp(24px,4vw,36px);
+      font-weight:800;
+      margin-bottom:16px;
+    }
+
+    .why p{
+      color:var(--muted);
+      max-width:720px;
+      margin:0 auto 40px;
+      font-size:17px;
+    }
+
+    .why-cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:24px;
+    }
+
+    .why-card{
+      background:var(--card);
+      padding:28px;
+      border-radius:16px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+      transition:transform 0.3s ease;
+    }
+
+    .why-card:hover{
+      transform:translateY(-6px);
+    }
+
+    .why-card h3{
+      font-size:18px;
+      margin-bottom:10px;
+    }
+
+    .why-card span{
+      font-size:28px;
+      display:block;
+      margin-bottom:8px;
+    }
+
+    /* PACKAGES */
+    .packages{
+      max-width:1100px;
+      margin:auto;
+      padding:80px 16px;
+      display:flex;
+      flex-direction:column;
+      gap:32px;
+    }
+
+    .card{
+      position:relative;
+      background:var(--card);
+      border-radius:18px;
+      padding:32px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+      border:2px solid transparent;
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border 0.35s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 20px 50px rgba(0,0,0,0.15);
+      border:2px solid var(--accent);
+    }
+
+    .badge{
+      position:absolute;
+      top:-14px;
+      right:20px;
+      background:var(--accent);
+      color:#000;
+      padding:6px 14px;
+      border-radius:20px;
+      font-size:13px;
+      font-weight:800;
+    }
+
+    .card h2{
+      font-size:24px;
+      font-weight:800;
+    }
+
+    .price{
+      font-size:28px;
+      font-weight:900;
+    }
+
+    .old-price{
+      text-decoration:line-through;
+      color:#999;
+      font-size:16px;
+      margin-right:8px;
+    }
+
+    .card:hover .price{
+      color:var(--accent);
+    }
+
+    .features{
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .features li::before{
+      content:"✔ ";
+      color:var(--success);
+      font-weight:bold;
+    }
+
+    .buy-btn{
+      margin-top:14px;
+      background:#000;
+      color:#fff;
+      padding:14px;
+      border-radius:12px;
+      text-align:center;
+      text-decoration:none;
+      font-weight:bold;
+      transition:background 0.3s ease, transform 0.3s ease;
+    }
+
+    .buy-btn:hover{
+      background:var(--accent);
+      color:#000;
+      transform:scale(1.04);
+    }
+
+    .premium{
+      background:linear-gradient(135deg,#fff 0%,#fff7e6 100%);
+      border:2px solid var(--accent);
+    }
+
+    .premium:hover{
+      transform:translateY(-14px) scale(1.01);
+    }
+
+    /* WHATSAPP */
+    .whatsapp{
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      background:#25D366;
+      color:#fff;
+      padding:14px 18px;
+      border-radius:50px;
+      font-weight:bold;
+      text-decoration:none;
+      box-shadow:0 10px 20px rgba(0,0,0,.2);
+      z-index:999;
+    }
+
+    @media (max-width:600px){
+      .card h2{font-size:20px}
+      .price{font-size:24px}
+
+    }
+    footer {
+  text-align: center;
+  padding: 30px;
+  color: #777;
+  font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    
+  <img src="logo.png" alt="NetAsset Logo">
+
+
+    <h1>NetAsset</h1>
+    <h1>HAYALİNİZDEKİ WEB SİTESİNİ ŞİMDİ OLUŞTURUN</h1>
+    <p>Hayallerinize bir adım daha yakın</p>
+    <a href="#neden" class="scroll-btn">Neden NetAsset? ↓</a>
+  </section>
+
+  <!-- WHY NETASSET -->
+  <section class="why" id="neden">
+    <div class="why-inner">
+      <h2>Neden NetAsset?</h2>
+      <p>
+        Çünkü biz sadece web sitesi yapmıyoruz.  
+        İşinizi dijitalde **satabilir, büyüyebilir ve yönetilebilir** hale getiriyoruz.
+      </p>
+
+      <div class="why-cards">
+        <div class="why-card">
+          <span>🚀</span>
+          <h3>Satış Odaklı Tasarım</h3>
+          <p>Ziyaretçiyi müşteriye çeviren net ve etkili arayüzler.</p>
+        </div>
+
+        <div class="why-card">
+          <span>📱</span>
+          <h3>Tam Mobil Uyum</h3>
+          <p>Tüm cihazlarda kusursuz çalışan modern yapılar.</p>
+        </div>
+
+        <div class="why-card">
+          <span>⚡</span>
+          <h3>Hız & Performans</h3>
+          <p>Hızlı açılan, SEO dostu, temiz kodlu siteler.</p>
+        </div>
+
+        <div class="why-card">
+          <span>🤝</span>
+          <h3>Gerçek Destek</h3>
+          <p>Hazır bırakıp gitmeyiz, yanınızda oluruz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="packages" id="paketler">
+
+    <div class="card premium">
+      <div class="badge">En Çok Tercih Edilen</div>
+      <h2>Premium Gold</h2>
+      <div class="price"><span class="old-price">5.750 TL</span> 3.500 TL</div>
+      <ul class="features">
+        <li>Domain (1 yıl)</li>
+        <li>Hosting</li>
+        <li>Kişiselleştirilmiş Web Site</li>
+        <li>E-Ticaret & Alışveriş Siteleri</li>
+        <li>İşletme & Fiyatlandırma Sayfaları</li>
+      </ul>
+      <a href="https://wa.me/905316423574?text=Merhaba%20Premium%20Gold%20paket%20hakkında%20bilgi%20almak%20istiyorum."
+         class="buy-btn" target="_blank">Teklif Al</a>
+    </div>
+
+    <div class="card">
+      <h2>Gold</h2>
+      <div class="price"><span class="old-price">4.750 TL</span> 3.000 TL</div>
+      <ul class="features">
+        <li>Hosting</li>
+        <li>Küçük İşletmelere Özel</li>
+        <li>Kurumsal Tanıtım</li>
+      </ul>
+      <a href="https://wa.me/905316423574?text=Merhaba%20Gold%20paket%20hakkında%20bilgi%20almak%20istiyorum."
+         class="buy-btn" target="_blank">Teklif Al</a>
+    </div>
+
+    <div class="card">
+      <h2>Silver</h2>
+      <div class="price">2.750 TL</div>
+      <ul class="features">
+        <li>Temel Tanıtım Sitesi</li>
+        <li>Mobil Uyumlu</li>
+      </ul>
+      <a href="https://wa.me/905316423574?text=Merhaba%20Silver%20paket%20hakkında%20bilgi%20almak%20istiyorum."
+         class="buy-btn" target="_blank">Teklif Al</a>
+    </div>
+
+    <div class="card">
+      <h2>Bronze</h2>
+      <div class="price">1.500 TL</div>
+      <ul class="features">
+        <li>Tek Sayfa Web Site</li>
+        <li>Domain & Hosting Hariç</li>
+      </ul>
+      <a href="https://wa.me/905316423574?text=Merhaba%20Bronze%20paket%20hakkında%20bilgi%20almak%20istiyorum."
+         class="buy-btn" target="_blank">Teklif Al</a>
+    </div>
+
+  </section>
+
+  <a href="https://wa.me/905316423574?text=Merhaba%20web%20paketleri%20hakkında%20bilgi%20almak%20istiyorum."
+     class="whatsapp" target="_blank">WhatsApp</a>
+
+     <footer>
+      © 2026 NetAsset — Tüm hakları saklıdır.
+     </footer>
+
+</body>
+</html>
